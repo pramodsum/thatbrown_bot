@@ -256,18 +256,31 @@ incoming.on('message', function(msg) {
               var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
               var dev_id = '5a9b85fd';
               var album_id = txt.replace("ThatBrown review ", "");
-              var hmac = crypto.createHmac('sha256', '/search/albums/' + album_id + "?DeveloperID=" + dev_id + '&Version=1.0');
+              var hmac = crypto.createHmac('sha256', private_key);
               var digest = hmac.digest('base64');
 
               console.dir("hmac: " + digest);
 
-              var url = "http://www.bollywoodapi.com/v1/" + digest;
+              var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
               console.dir("URL: " + url);
 
               var Request = unirest.get(url)
                 .headers(digest)
                 .end(function (response) {
                   console.dir(response.body);
+
+                  API.Bots.post(
+                      ACCESS_TOKEN, // Identify the access token
+                      bot_id, // Identify the bot that is sending the message
+                      response.body, // Construct the message
+                      {}, // No pictures related to this post
+                      function(err,res) {
+                          if (err) {
+                              console.log("[API.Bots.post] Reply Message Error!");
+                          } else {
+                              console.log("[API.Bots.post] Reply Message Sent!");
+                          }
+                      });
                 });
             }
 
