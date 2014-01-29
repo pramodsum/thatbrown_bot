@@ -266,7 +266,7 @@ incoming.on('message', function(msg) {
                 else {
                   console.dir("Error: " + error);
                   console.dir("Body: " + body);
-                  console.log("Response: " + util.inspect(response, { showHidden: true, depth: null }));
+                  // console.log("Response: " + util.inspect(response, { showHidden: true, depth: null }));
                 }
               })
 
