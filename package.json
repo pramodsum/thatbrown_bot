@@ -24,7 +24,13 @@
   "homepage": "https://github.com/pramodsum/thatbrown_bot",
   "dependencies": {
     "logfmt": "~0.20.0",
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "mime": "~1.2.11",
+    "q": "~1.0.0",
+    "request": "~2.33.0",
+    "websocket": "~1.0.8",
+    "groupme": "~0.5.4",
+    "forecast": "~0.1.1"
   },
   "engines": {
     "node": "0.8.x",
