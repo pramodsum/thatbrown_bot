@@ -279,7 +279,7 @@ incoming.on('message', function(msg) {
               var url = "http://brospeak.com/?api=yeah&input=" + txt;
               var Request = unirest.get(url)
                 .end(function (response) {
-                  console.log(response);
+                  console.log(response.body);
 
                 //   API.Bots.post(
                 //       ACCESS_TOKEN, // Identify the access token
