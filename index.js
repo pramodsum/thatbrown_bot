@@ -260,10 +260,11 @@ incoming.on('message', function(msg) {
 
               request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                  console.dir(JSON.parse(response));
+                  console.dir("Response: " + JSON.parse(response));
                 }
                 else {
                   console.dir("Error: " + error);
+                  console.dir("Response: " + JSON.parse(response));
                 }
               })
 
