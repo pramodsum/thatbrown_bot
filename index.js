@@ -1,5 +1,6 @@
 var express = require("express");
 var logfmt = require("logfmt");
+var crypto    = require('crypto');
 var app = express();
 
 /************************************************************************
@@ -226,7 +227,42 @@ incoming.on('message', function(msg) {
                       }
                   });
             }
+
+            /************************************************************************
+             * Late response
+             ***********************************************************************/
             else if(txt.search("late") != -1) {
+              API.Bots.post(
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  "Don't be late... or somebody gonna get-a-hurt real bad!", // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
+            }
+
+            /************************************************************************
+             * Bollywood API stuff
+             ***********************************************************************/
+            else if(txt.search("ThatBrown review") != -1) {
+              var private_key = cfd2d4b1e7bee9ff103656af5e49b03c;
+              var dev_id = 5a9b85fd;
+              var hmac = crypto.createHmac("sha256", private_key);
+              var album_id = txt.replace("ThatBrown ", "");
+
+              var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "/songs/?DeveloperID=$DEVID";
+
+              request('http://www.google.com', function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                  console.log(body) // Print the google web page.
+                }
+              })
+
               API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
