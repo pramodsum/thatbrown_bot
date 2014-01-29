@@ -34,7 +34,8 @@
     "passport": "~0.2.0",
     "passport-google-oauth": "~0.1.5",
     "forecast": "~0.1.1",
-    "crypto": "0.0.3"
+    "crypto": "0.0.3",
+    "unirest": "~0.1.1"
   },
   "engines": {
     "node": "0.8.x",

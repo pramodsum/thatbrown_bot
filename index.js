@@ -2,6 +2,7 @@ var express = require("express");
 var logfmt = require("logfmt");
 var request = require('request');
 var util = require('util');
+var unirest = require('unirest');
 var crypto    = require('crypto');
 var app = express();
 
@@ -259,19 +260,47 @@ incoming.on('message', function(msg) {
 
               console.dir("hmac: " + hmac.read());
 
-              var url = "http://www.bollywoodapi.com/v1/search/albums/" + hmac.digest('base64') + "?DeveloperID=" + dev_id + "&Version=1.0";
+              var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
               console.dir("URL: " + url);
 
-              request(url, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                  console.dir("Body: " + body);
-                }
-                else {
-                  console.dir("Error: " + error);
-                  console.dir("Body: " + body);
-                  // console.log("Response: " + util.inspect(response, { showHidden: true, depth: null }));
-                }
-              })
+              var Request = unirest.get(url)
+                .headers({ 
+                  "hmac": hmac.read();
+                })
+                .end(function (response) {
+                  console.log(response);
+                });
+
+              // request(url, function (error, response, body) {
+              //   if (!error && response.statusCode == 200) {
+              //     console.dir("Body: " + body);
+              //   }
+              //   else {
+              //     console.dir("Error: " + error);
+              //     console.dir("Body: " + body);
+              //     // console.log("Response: " + util.inspect(response, { showHidden: true, depth: null }));
+              //   }
+              }
+              else {
+                var url = "http://brospeak.com/?api=yeah&input=" + txt;
+                var Request = unirest.get(url)
+                  .end(function (response) {
+                    console.log(response);
+
+                    API.Bots.post(
+                        ACCESS_TOKEN, // Identify the access token
+                        bot_id, // Identify the bot that is sending the message
+                        response, // Construct the message
+                        {}, // No pictures related to this post
+                        function(err,res) {
+                            if (err) {
+                                console.log("[API.Bots.post] Reply Message Error!");
+                            } else {
+                                console.log("[API.Bots.post] Reply Message Sent!");
+                            }
+                        });
+                  });
+              }
 
               // API.Bots.post(
               //     ACCESS_TOKEN, // Identify the access token
