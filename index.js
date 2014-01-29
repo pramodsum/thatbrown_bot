@@ -257,7 +257,7 @@ incoming.on('message', function(msg) {
 
               var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "/songs/?DeveloperID=$DEVID";
 
-              request('http://www.google.com', function (error, response, body) {
+              request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                   console.log(body) // Print the google web page.
                 }
