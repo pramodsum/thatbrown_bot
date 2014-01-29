@@ -256,7 +256,7 @@ incoming.on('message', function(msg) {
               var hmac = crypto.createHmac("sha256", private_key);
               var album_id = txt.replace("ThatBrown ", "");
 
-              var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "/songs/?DeveloperID=$DEVID";
+              var url = "http://www.bollywoodapi.com/v1/albums/" + album_id + "/songs/?DeveloperID=$DEVID";
 
               request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
