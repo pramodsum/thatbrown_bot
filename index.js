@@ -88,7 +88,21 @@ incoming.on('message', function(msg) {
               API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
-                  "YAY TBS 2014!", // Construct the message
+                  "#tbreezy2014", // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
+            }
+            else if(txt.search("late") != -1) {
+              API.Bots.post(
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  "Oh damn! You seem to be running late! Late for a very important date!", // Construct the message
                   {}, // No pictures related to this post
                   function(err,res) {
                       if (err) {
