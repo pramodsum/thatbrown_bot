@@ -1,0 +1,33 @@
+{
+  "name": "thatbrown_bot",
+  "version": "0.0.0",
+  "description": "ThatBrown groupme bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pramodsum/thatbrown_bot.git"
+  },
+  "keywords": [
+    "heroku",
+    "groupme",
+    "thatbrown",
+    "bot"
+  ],
+  "author": "pramodsum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pramodsum/thatbrown_bot/issues"
+  },
+  "homepage": "https://github.com/pramodsum/thatbrown_bot",
+  "dependencies": {
+    "logfmt": "~0.20.0",
+    "express": "~3.4.8"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
