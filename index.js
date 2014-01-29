@@ -265,7 +265,7 @@ incoming.on('message', function(msg) {
 
               var Request = unirest.get(url)
                 .headers({ 
-                  "hmac": hmac.read();
+                  "hmac": hmac;
                 })
                 .end(function (response) {
                   console.log(response);
