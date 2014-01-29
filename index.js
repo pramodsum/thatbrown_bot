@@ -261,7 +261,7 @@ incoming.on('message', function(msg) {
 
               console.dir("hmac: " + digest);
 
-              var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
+              var url = "http://www.bollywoodapi.com/v1/" + digest;
               console.dir("URL: " + url);
 
               var Request = unirest.get(url)
