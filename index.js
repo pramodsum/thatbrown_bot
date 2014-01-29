@@ -264,9 +264,9 @@ incoming.on('message', function(msg) {
               console.dir("URL: " + url);
 
               var Request = unirest.get(url)
-                .headers({ 
-                  "hmac": hmac;
-                })
+                // .headers({ 
+                //   "hmac": hmac;
+                // })
                 .end(function (response) {
                   console.log(response);
                 });
