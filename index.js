@@ -254,10 +254,11 @@ incoming.on('message', function(msg) {
             else if(txt.search("ThatBrown review") != -1) {
               var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
               var dev_id = '5a9b85fd';
-              var hmac = crypto.createHmac("sha256", private_key);
+              var hmac = crypto.createHmac('sha256', private_key);
               var album_id = txt.replace("ThatBrown review ", "");
 
-              var url = "http://www.bollywoodapi.com/v1/albums/" + album_id + "/songs/?DeveloperID=" + dev_id + "&Version=1.0";
+              var url = "http://www.bollywoodapi.com/v1/search/albums/" + hmac.digest('base64') + "?DeveloperID=" + dev_id + "&Version=1.0";
+              console.dir("URL: " + url);
 
               request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
