@@ -264,7 +264,8 @@ incoming.on('message', function(msg) {
                 }
                 else {
                   console.dir("Error: " + error);
-                  console.dir("Response: " + JSON.parse(response));
+                  console.dir("Body: " + bdoy);
+                  console.log("Response: " + util.inspect(response, { showHidden: true, depth: null }));
                 }
               })
 
