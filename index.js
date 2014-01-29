@@ -261,20 +261,24 @@ incoming.on('message', function(msg) {
                 if (!error && response.statusCode == 200) {
                   console.log(body) // Print the google web page.
                 }
+                else {
+                  console.dir("Response: " + response);
+                  console.dir("Body: " + body);
+                }
               })
 
-              API.Bots.post(
-                  ACCESS_TOKEN, // Identify the access token
-                  bot_id, // Identify the bot that is sending the message
-                  "Don't be late... or somebody gonna get-a-hurt real bad!", // Construct the message
-                  {}, // No pictures related to this post
-                  function(err,res) {
-                      if (err) {
-                          console.log("[API.Bots.post] Reply Message Error!");
-                      } else {
-                          console.log("[API.Bots.post] Reply Message Sent!");
-                      }
-                  });
+              // API.Bots.post(
+              //     ACCESS_TOKEN, // Identify the access token
+              //     bot_id, // Identify the bot that is sending the message
+              //     "Don't be late... or somebody gonna get-a-hurt real bad!", // Construct the message
+              //     {}, // No pictures related to this post
+              //     function(err,res) {
+              //         if (err) {
+              //             console.log("[API.Bots.post] Reply Message Error!");
+              //         } else {
+              //             console.log("[API.Bots.post] Reply Message Sent!");
+              //         }
+              //     });
             }
         }
     }
