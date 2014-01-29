@@ -212,7 +212,7 @@ incoming.on('message', function(msg) {
             /************************************************************************
              * TBS hype
              ***********************************************************************/
-            if(txt.search("TBS") != -1) {
+            if(txt.search("TBS") != -1 || txt.search("tbs") != -1 || txt.search("tbreezy") != -1 || txt.search("ThatBrown") != -1) {
               API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
