@@ -1,5 +1,6 @@
 var express = require("express");
 var logfmt = require("logfmt");
+var request = require('request');
 var crypto    = require('crypto');
 var app = express();
 
