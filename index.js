@@ -255,7 +255,7 @@ incoming.on('message', function(msg) {
               var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
               var dev_id = '5a9b85fd';
               var hmac = crypto.createHmac("sha256", private_key);
-              var album_id = txt.replace("ThatBrown ", "");
+              var album_id = txt.replace("ThatBrown review ", "");
 
               var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "/songs/?DeveloperID=" + dev_id;
 
