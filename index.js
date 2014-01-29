@@ -30,34 +30,6 @@ var USER_ID  = process.argv[3];
 var BOT_NAME = 'ThatBrown';
 
 /************************************************************************
- * Bro Code
- ***********************************************************************/
-
-var bro_code = [ 
-    "Bros before hoes", 
-    "A Bro will not talk about something lame in front of a woman",
-    "Bros don't date their bro ex girlfriends",
-    "Bros buy porn for all the bros",
-    "A bro never sends a greeting card to another bro",
-    "Bros do not share dessert",
-    "Poorly-planned-mediocre-social-media-practical-jokes before honesty",
-    "A Bro shall always alert another Bro of any girl fight",
-    "Bros cannot make eye contact during a devil's threeway",
-    "A Bro will, whenever possible, provide a bro with protection",
-    "A bro saves a bro from his ex",
-    "A bro saves a bro from the friend zone",
-    "A Bro shall at all times say \"yes\"",
-    "The mom of a Bro is always off-limits. But the step-mom of a Bro is fair game if she initiates it and/or is wearing at least one article of leopards print clothing",
-    "A bro pretends to like cigars",
-    "A bro never dates a bro's ex-girlfriend (unless granted permission)",
-    "A bro that calls \"dibs\" first, has dibs",
-    "No leaving a Bro hanging",
-    "A Bro always likes the new profile picture of another bro",
-    "A true Bro will never be \"Necklace Guy\".",
-    "A bro shall not have a weird moment with another bro's fiance",
-];
-
-/************************************************************************
  * Set up the message-based IncomingStream and the HTTP push
  ***********************************************************************/
 
@@ -110,103 +82,21 @@ incoming.on('message', function(msg) {
             var txt = msg["data"]["subject"]["text"];
 
             /************************************************************************
-             * Weather Responses
+             * TBS hype
              ***********************************************************************/
-            if(txt.search("weather") != -1) {
-
-                // Require the module
-                var Forecast = require('forecast');
-
-                // Initialize
-                var forecast = new Forecast({
-                  service: 'forecast.io',
-                  key: 'f267218743d71c6d486401ad298558fa',
-                  units: 'f', // Only the first letter is parsed
-                  cache: true,      // Cache API requests?
-                  ttl: {           // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
-                      minutes: 27,
-                      seconds: 45
-                    }
-                });
-
-                var message = "Nope. Nada. Zilch.";
-
-                // Retrieve weather information from coordinates (Ann Arbor, MI)
-                forecast.get([42.2828, -83.7347], function(err, weather) {
-                  if(err) console.dir(err);
-                  else  {
-                      var temp = weather.currently.temperature;
-                      console.dir("Current temp: " + temp);
-
-                      if(temp > 60) {
-                        console.log("It's " + temp.toString() + " degrees outside! Time to bring out the sundresses!");
-                        message = "It's " + tempd.toString() + " degrees outside! Time to bring out the sundresses!";
-                      }
-                      else if(temp > 40) {
-                        console.log("It's cool outside... Just like me.");
-                        message = "It's cool outside... Just like me.";
-                      }
-                      else if(temp > 20) {
-                        console.log("Brrrr it's cold! But baby don't worry... Daddy's home!");
-                        message = "Brrrr it's cold! But baby don't worry... Daddy's home!";
-                      }
-                      else if(temp > 0) {
-                        console.log("Suit up! It's freezing!");
-                        message = "Suit up! It's freezing!";
-                      }
-                      else {
-                        console.log("It's " + temp.toString() + " degrees right now. So cold that it's going to be Legen...wait for it...DARY!");
-                        message = "It's " + temp.toString() + " degrees right now. So cold that it's going to be Legen...wait for it...DARY!";
-                      }
-                    API.Bots.post(
-                    ACCESS_TOKEN, // Identify the access token
-                    bot_id, // Identify the bot that is sending the message
-                    message, // Construct the message
-                    {}, // No pictures related to this post
-                    function(err,res) {
-                        if (err) {
-                            console.log("[API.Bots.post] Weather Response Error!");
-                        } else {
-                            console.log("[API.Bots.post] Weather Response Sent!");
-                        }
-                    });
-                  }
-                });
-            }
-            /************************************************************************
-             * Bro code
-             ***********************************************************************/
-            else if(txt.search("bro code") != -1) {
-              var message = bro_code[Math.floor(Math.random() * bro_code.length)];
+            if(txt.search("TBS") != -1) {
               API.Bots.post(
-              ACCESS_TOKEN, // Identify the access token
-              bot_id, // Identify the bot that is sending the message
-              message, // Construct the message
-              {}, // No pictures related to this post
-              function(err,res) {
-                if (err) {
-                    console.log("[API.Bots.post] Reply Message Error!");
-                } else {
-                    console.log("[API.Bots.post] Reply Message Sent!");
-                }
-              });
-            }
-            /************************************************************************
-             * Default spaced out response
-             ***********************************************************************/
-            else {
-                API.Bots.post(
-                    ACCESS_TOKEN, // Identify the access token
-                    bot_id, // Identify the bot that is sending the message
-                    "I'm sorry, what?", // Construct the message
-                    {}, // No pictures related to this post
-                    function(err,res) {
-                        if (err) {
-                            console.log("[API.Bots.post] Reply Message Error!");
-                        } else {
-                            console.log("[API.Bots.post] Reply Message Sent!");
-                        }
-                    });
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  "YAY TBS 2014!", // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
             }
         }
     }
