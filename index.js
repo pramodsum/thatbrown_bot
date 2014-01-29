@@ -257,6 +257,8 @@ incoming.on('message', function(msg) {
               var hmac = crypto.createHmac('sha256', private_key);
               var album_id = txt.replace("ThatBrown review ", "");
 
+              console.dir("hmac: " + hmac.read());
+
               var url = "http://www.bollywoodapi.com/v1/search/albums/" + hmac.digest('base64') + "?DeveloperID=" + dev_id + "&Version=1.0";
               console.dir("URL: " + url);
 
