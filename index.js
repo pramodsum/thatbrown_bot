@@ -257,14 +257,15 @@ incoming.on('message', function(msg) {
               var dev_id = '5a9b85fd';
               var hmac = crypto.createHmac('sha256', private_key);
               var album_id = txt.replace("ThatBrown review ", "");
+              var digest = hmac.digest();
 
-              console.dir("hmac: " + hmac.read());
+              console.dir("hmac: " + digest);
 
               var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
               console.dir("URL: " + url);
 
               var Request = unirest.get(url)
-                .headers(hmac.read())
+                .headers(digest)
                 .end(function (response) {
                   console.dir(response.body);
                 });
