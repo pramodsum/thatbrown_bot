@@ -217,7 +217,7 @@ incoming.on('message', function(msg) {
                   "X-Mashape-Authorization": "iR2g3eyxXH6tK1tZELkkVJikSMeafCWC"
                 })
                 .end(function (response) {
-                  console.log("BODY: " + response.body);
+                  console.log("RESPONSE: " + response);
               });
             }
         }
