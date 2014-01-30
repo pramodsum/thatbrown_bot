@@ -1,3 +1,19 @@
+/**
+
+ThatBrown Bot Triggers: 
+  "how many days until TBS" or "How many days until TBS": 
+      Messages with number of days until TBS Show
+  "tbs" or "TBS" or "Tbs" or "Tbreezy" or "tbreezy": 
+      Prints #tbreezy2014
+  "late": 
+      Prints "Don't be late... or somebody gonna get-a-hurt real bad!"
+  "Russel Peters" or "russel peters" or "Russel peters" or "Russell Peters" or "russell peters" or "Russell peters":
+      Prints random Russell Peters quotes/jokes
+  "Next bus to north" or "next bus to north":
+      Prints number of minutes until Bursley Baits reaches CC Little
+
+**/
+
 var express = require("express"),
   logfmt = require("logfmt"),
   request = require('request'),
