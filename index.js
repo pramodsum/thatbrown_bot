@@ -109,7 +109,7 @@ incoming.on('message', function(msg) {
               require('./Date');
               var today = Date.today();
               var TBS_date = Date.parse("April 5th 2014");
-              var time = TBS_date - today;
+              var time = TBS_date.getDate() - today.getDate();
 
               var message = "TBS is in " + time + " days! GET PUMPED!!!!";
               if(time == "now") message = "BURSLEY BAITS IS @ CC LITTLE RIGHT NOW! GOGOGOGOGOGOGO!";
