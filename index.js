@@ -212,9 +212,12 @@ incoming.on('message', function(msg) {
 
             else if(txt.search("next bus") != -1) {
               var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits"
-              var Request = unirest.get(url)
+              var Request = unirest.get("https://scrapegoat.p.mashape.com/?url=" + url)
+                .headers({ 
+                  "X-Mashape-Authorization": "iR2g3eyxXH6tK1tZELkkVJikSMeafCWC"
+                })
                 .end(function (response) {
-                  console.dir("Site Data: " + response.body);
+                  console.log("BODY: " + response.body);
               });
             }
         }
