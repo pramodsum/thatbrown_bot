@@ -42,7 +42,7 @@ var BOT_NAME = 'ThatBrown';
 
 var rp_quotes = [ 
     "Just for the record my Arab friends, i dont do any Arab jokes in my act. Its not that i dont think you are funny. It's just .. I dont know, i dont wanna..... die?", 
-    "Indian people, we are proud of our cheapness. You are never gonna insult us by calling us cheap. Thats the best part, you know. You walk up to an Indian guy \"You guys are cheap\" .. \"Thank you for noticing, thank you. Thank you very much. Thank you" "That guy just called you cheap\" \"No, no, no. He pronounced it cheap. But what he was saying was - smart. Very smart he was\".",
+    "Indian people, we are proud of our cheapness. You are never gonna insult us by calling us cheap. Thats the best part, you know. You walk up to an Indian guy \"You guys are cheap\" .. \"Thank you for noticing, thank you. Thank you very much. Thank you\" \"That guy just called you cheap\" \"No, no, no. He pronounced it cheap. But what he was saying was - smart. Very smart he was\".",
     "Our cheapness changed the world. Indians are so dedicated to being so cheap for so long, that Indian people actually created the number zero. You know how much dedication that took? That means, back in the day some Indian guy was looking at the numeric system. \"*indian accent* 1 2 3 4 5 6 7 8 9.. Hmmm.. None of those are the amounts I want to pay\". Then his friend came along and drew a circle. \"Whats that?\" \"Nothing\" \"Whats inside of it?\" \"Nothing\" \"Whats its value?\" \"Nothing... *Sniff* Its beautiful (shedding a tear). We shall call it (jeero)zero. Take it and go\".",
     "TOO good.. TOOOOO good. First Class. A1. Fantastic. Mind blasting"."You mean mind blowing"."No, no anything can blow your mind, it BLASTED my mind\"",
     "Just for funnnnnn",
@@ -217,7 +217,7 @@ incoming.on('message', function(msg) {
                   "X-Mashape-Authorization": "iR2g3eyxXH6tK1tZELkkVJikSMeafCWC"
                 })
                 .end(function (response) {
-                  console.log("RESPONSE: " + response);
+                  console.log("BODY: " + response.body);
               });
             }
         }
