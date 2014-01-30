@@ -6,7 +6,7 @@ ThatBrown Bot Triggers:
       Messages with number of days until TBS Show
   "tbs" or "TBS" or "Tbs" or "Tbreezy" or "tbreezy": 
       Prints #tbreezy2014
-  "late": 
+  "late" or "almost there" or "Almost there": 
       Prints "Don't be late... or somebody gonna get-a-hurt real bad!"
   "Russel Peters" or "russel peters" or "Russel peters" or "Russell Peters" or "russell peters" or "Russell peters":
       Prints random Russell Peters quotes/jokes
@@ -166,7 +166,7 @@ incoming.on('message', function(msg) {
             /************************************************************************
              * Late response
              ***********************************************************************/
-            else if(txt.search("late") != -1) {
+            else if(txt.search("late") != -1 || txt.search("Almost there") != -1 || txt.search("almost there") != -1) {
               API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
