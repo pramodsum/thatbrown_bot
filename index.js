@@ -231,6 +231,31 @@ incoming.on('message', function(msg) {
                   });
               });
             }
+
+            /************************************************************************
+             * Days until TBS
+             ***********************************************************************/
+            else if(txt.search("how many days until TBS") != -1 || txt.search("How many days until TBS") != -1) {
+              require('./Date');
+              var today = Date.today();
+              var TBS_date = Date.parse("April 5th 2014");
+              var time = TBS_date - today;
+
+              var message = "TBS is in " + time + " days! GET PUMPED!!!!";
+              if(time == "now") message = "BURSLEY BAITS IS @ CC LITTLE RIGHT NOW! GOGOGOGOGOGOGO!";
+              API.Bots.post(
+                ACCESS_TOKEN, // Identify the access token
+                bot_id, // Identify the bot that is sending the message
+                message, // Construct the message
+                {}, // No pictures related to this post
+                function(err,res) {
+                    if (err) {
+                        console.log("[API.Bots.post] Reply Message Error!");
+                    } else {
+                        console.log("[API.Bots.post] Reply Message Sent!");
+                    }
+                });
+            }
         }
     }
 
