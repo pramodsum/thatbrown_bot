@@ -70,22 +70,6 @@ incoming.on('status', function() {
 });
 */
 
-// Utility function that downloads a URL and invokes
-// callback with the data.
-function download(url, callback) {
-  http.get(url, function(res) {
-    var data = "";
-    res.on('data', function (chunk) {
-      data += chunk;
-    });
-    res.on("end", function() {
-      callback(data);
-    });
-  }).on("error", function() {
-    callback(null);
-  });
-}
-
 // This waits for the IncomingStream to complete its handshake and start listening.
 // We then get the bot id of a specific bot.
 incoming.on('connected', function() {
@@ -212,20 +196,33 @@ incoming.on('message', function(msg) {
             // }
 
             else if(txt.search("next bus") != -1) {
-              var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits"
+              var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits";
+              var looking_for = '<a name="Bursley-Baits%20C.C.%20Little%20SE" >C.C. Little</a>&nbsp;<a title="click to refresh stop C.C. Little SE for route Bursley-Baits" href="index.php?&route=Bursley-Baits&stop=C.C.%20Little%20SE#Bursley-Baits%20C.C.%20Little%20SE" >';
 
-              // var Request = unirest.get("https://scrapeit.p.mashape.com/scrape/" + url)
-              //   .headers({ 
-              //     "X-Mashape-Authorization": "iR2g3eyxXH6tK1tZELkkVJikSMeafCWC"
-              //   })
-              //   .end(function (response) {
-              //     console.log(response);
-              // });
-               
               request({
                 uri: url,
               }, function(error, response, body) {
                 console.log("BODY: \n" + body);
+
+                var line_num = body.indexOf(looking_for);
+                if(line_num == -1) return;
+                
+                var time = body.substr(line_num + 2, 2);
+                if(time.charAt(1) == 'm') time.replace(time.substr(0,1));
+
+                var message = "Next Bursley Baits bus @ CC Little in: " + time + " minutes\n";
+                API.Bots.post(
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  message, // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
               });
             }
         }
