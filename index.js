@@ -1,10 +1,11 @@
-var express = require("express");
-var logfmt = require("logfmt");
-var request = require('request');
-var util = require('util');
-var unirest = require('unirest');
-var crypto    = require('crypto');
-var app = express();
+var express = require("express"),
+  logfmt = require("logfmt"),
+  request = require('request'),
+  util = require('util'),
+  unirest = require('unirest'),
+  crypto = require('crypto'),
+  http = require("http"),
+  app = express();
 
 /************************************************************************
  * Basic site stuff
@@ -36,6 +37,19 @@ var USER_ID  = process.argv[3];
 var BOT_NAME = 'ThatBrown';
 
 /************************************************************************
+ * Russell Peters Quotes
+ ***********************************************************************/
+
+var rp_quotes = [ 
+    "Just for the record my Arab friends, i dont do any Arab jokes in my act. Its not that i dont think you are funny. It's just .. I dont know, i dont wanna..... die?", 
+    "Indian people, we are proud of our cheapness. You are never gonna insult us by calling us cheap. Thats the best part, you know. You walk up to an Indian guy \"You guys are cheap\" .. \"Thank you for noticing, thank you. Thank you very much. Thank you" "That guy just called you cheap\" \"No, no, no. He pronounced it cheap. But what he was saying was - smart. Very smart he was\".",
+    "Our cheapness changed the world. Indians are so dedicated to being so cheap for so long, that Indian people actually created the number zero. You know how much dedication that took? That means, back in the day some Indian guy was looking at the numeric system. \"*indian accent* 1 2 3 4 5 6 7 8 9.. Hmmm.. None of those are the amounts I want to pay\". Then his friend came along and drew a circle. \"Whats that?\" \"Nothing\" \"Whats inside of it?\" \"Nothing\" \"Whats its value?\" \"Nothing... *Sniff* Its beautiful (shedding a tear). We shall call it (jeero)zero. Take it and go\".",
+    "TOO good.. TOOOOO good. First Class. A1. Fantastic. Mind blasting"."You mean mind blowing"."No, no anything can blow your mind, it BLASTED my mind\"",
+    "Just for funnnnnn",
+    "Somebody gonna get-a-hurt real bad!",
+];
+
+/************************************************************************
  * Set up the message-based IncomingStream and the HTTP push
  ***********************************************************************/
 
@@ -54,6 +68,22 @@ incoming.on('status', function() {
     console.log("[IncomingStream 'status']", str, args);
 });
 */
+
+// Utility function that downloads a URL and invokes
+// callback with the data.
+function download(url, callback) {
+  http.get(url, function(res) {
+    var data = "";
+    res.on('data', function (chunk) {
+      data += chunk;
+    });
+    res.on("end", function() {
+      callback(data);
+    });
+  }).on("error", function() {
+    callback(null);
+  });
+}
 
 // This waits for the IncomingStream to complete its handshake and start listening.
 // We then get the bot id of a specific bot.
@@ -124,6 +154,25 @@ incoming.on('message', function(msg) {
             }
 
             /************************************************************************
+             * Russell Peters
+             ***********************************************************************/
+            else if(txt.search("Russel Peters") != -1 || txt.search("russel peters") != -1 || txt.search("Russel peters") != -1 || txt.search("Russell Peters") != -1 || txt.search("russell peters") != -1 || txt.search("Russell peters") != -1) {
+              var message = rp_quotes[Math.floor(Math.random() * rp_quotes.length)];
+              API.Bots.post(
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  message, // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
+            }
+
+            /************************************************************************
              * Bollywood API stuff
              ***********************************************************************/
             // else if(txt.search("ThatBrown review") != -1) {
@@ -160,6 +209,17 @@ incoming.on('message', function(msg) {
             //           });
             //     });
             // }
+
+            else if(txt.search("next bus to north") != -1) {
+              var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits"
+
+              download(url, function(data) {
+                if (data) {
+                  console.log(data);
+                }
+                else console.log("error");  
+              });
+            }
         }
     }
 
