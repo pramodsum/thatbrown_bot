@@ -208,7 +208,7 @@ incoming.on('message', function(msg) {
                   return;
                 }
 
-                var time = body.substr(line_num + 4, 3);
+                var time = body.substr(line_num + looking_for.length() + 4, 3);
                 console.dir("TIME: " + time);
                 if(time.charAt(1) == 'm') time.replace(time.substr(0,1));
 
