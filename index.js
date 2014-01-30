@@ -213,6 +213,7 @@ incoming.on('message', function(msg) {
                 if(time.charAt(2) == ']') time.replace(time.substr(0,1) + m);
 
                 var message = "Next Bursley Baits bus @ CC Little in " + time + "\n";
+                if(time == "now") message = "BURSLEY BAITS IS @ CC LITTLE RIGHT NOW! GOGOGOGOGOGOGO!";
                 API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
