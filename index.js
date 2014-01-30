@@ -168,7 +168,7 @@ incoming.on('message', function(msg) {
              * Russell Peters
              ***********************************************************************/
             else if(txt.search("Russel Peters") != -1 || txt.search("russel peters") != -1 || txt.search("Russel peters") != -1 || txt.search("Russell Peters") != -1 || txt.search("russell peters") != -1 || txt.search("Russell peters") != -1) {
-              var message = "\"" + rp_quotes[Math.floor(Math.random() * rp_quotes.length)] + "\" - Russell Peters";
+              var message = "WWRPD: " + rp_quotes[Math.floor(Math.random() * rp_quotes.length)];
               API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
