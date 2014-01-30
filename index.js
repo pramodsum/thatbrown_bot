@@ -79,89 +79,89 @@ incoming.on('connected', function() {
 incoming.on('message', function(msg) {
     console.log("[IncomingStream 'message'] Message Received");
 
-    // if (msg["data"] 
-    //     && msg["data"]["subject"] 
-    //     && msg["data"]["subject"]["text"]
-    //     /*&& msg["data"]["subject"]["text"].indexOf(BOT_NAME) >= 0*/) {
+    if (msg["data"] 
+        && msg["data"]["subject"] 
+        && msg["data"]["subject"]["text"]
+        /*&& msg["data"]["subject"]["text"].indexOf(BOT_NAME) >= 0*/) {
 
-    //     if (bot_id /*&& msg["data"]["subject"]["name"] != BOT_NAME*/) {
-    //         var txt = msg["data"]["subject"]["text"];
+        if (bot_id && msg["data"]["subject"]["name"] != BOT_NAME) {
+            var txt = msg["data"]["subject"]["text"];
 
-    //         /************************************************************************
-    //          * TBS hype
-    //          ***********************************************************************/
-    //         if(txt.search("TBS") != -1 || txt.search("tbs") != -1 || txt.search("Tbs") != -1|| txt.search("tbreezy") != -1) {
-    //           API.Bots.post(
-    //               ACCESS_TOKEN, // Identify the access token
-    //               bot_id, // Identify the bot that is sending the message
-    //               "#tbreezy2014", // Construct the message
-    //               {}, // No pictures related to this post
-    //               function(err,res) {
-    //                   if (err) {
-    //                       console.log("[API.Bots.post] Reply Message Error!");
-    //                   } else {
-    //                       console.log("[API.Bots.post] Reply Message Sent!");
-    //                   }
-    //               });
-    //         }
+            /************************************************************************
+             * TBS hype
+             ***********************************************************************/
+            if(txt.search("TBS") != -1 || txt.search("tbs") != -1 || txt.search("Tbs") != -1|| txt.search("tbreezy") != -1) {
+              API.Bots.post(
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  "#tbreezy2014", // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
+            }
 
-    //         /************************************************************************
-    //          * Late response
-    //          ***********************************************************************/
-    //         else if(txt.search("late") != -1) {
-    //           API.Bots.post(
-    //               ACCESS_TOKEN, // Identify the access token
-    //               bot_id, // Identify the bot that is sending the message
-    //               "Don't be late... or somebody gonna get-a-hurt real bad!", // Construct the message
-    //               {}, // No pictures related to this post
-    //               function(err,res) {
-    //                   if (err) {
-    //                       console.log("[API.Bots.post] Reply Message Error!");
-    //                   } else {
-    //                       console.log("[API.Bots.post] Reply Message Sent!");
-    //                   }
-    //               });
-    //         }
+            /************************************************************************
+             * Late response
+             ***********************************************************************/
+            else if(txt.search("late") != -1) {
+              API.Bots.post(
+                  ACCESS_TOKEN, // Identify the access token
+                  bot_id, // Identify the bot that is sending the message
+                  "Don't be late... or somebody gonna get-a-hurt real bad!", // Construct the message
+                  {}, // No pictures related to this post
+                  function(err,res) {
+                      if (err) {
+                          console.log("[API.Bots.post] Reply Message Error!");
+                      } else {
+                          console.log("[API.Bots.post] Reply Message Sent!");
+                      }
+                  });
+            }
 
-    //         /************************************************************************
-    //          * Bollywood API stuff
-    //          ***********************************************************************/
-    //         // else if(txt.search("ThatBrown review") != -1) {
-    //         //   var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
-    //         //   var dev_id = '5a9b85fd';
-    //         //   var album_id = txt.replace("ThatBrown review ", "");
-    //         //   var hmac = crypto.createHmac('sha256', private_key);
-    //         //   var digest = hmac.digest('base64');
+            /************************************************************************
+             * Bollywood API stuff
+             ***********************************************************************/
+            // else if(txt.search("ThatBrown review") != -1) {
+            //   var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
+            //   var dev_id = '5a9b85fd';
+            //   var album_id = txt.replace("ThatBrown review ", "");
+            //   var hmac = crypto.createHmac('sha256', private_key);
+            //   var digest = hmac.digest('base64');
 
-    //         //   console.dir("hmac: " + digest);
+            //   console.dir("hmac: " + digest);
 
-    //         //   var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
-    //         //   console.dir("URL: " + url);
+            //   var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
+            //   console.dir("URL: " + url);
 
-    //         //   var Request = unirest.get(url)
-    //         //     .headers({ 
-    //         //       'Accept': 'application/json',
+            //   var Request = unirest.get(url)
+            //     .headers({ 
+            //       'Accept': 'application/json',
 
-    //         //     })
-    //         //     .end(function (response) {
-    //         //       console.dir(response.body);
+            //     })
+            //     .end(function (response) {
+            //       console.dir(response.body);
 
-    //         //       API.Bots.post(
-    //         //           ACCESS_TOKEN, // Identify the access token
-    //         //           bot_id, // Identify the bot that is sending the message
-    //         //           response.body, // Construct the message
-    //         //           {}, // No pictures related to this post
-    //         //           function(err,res) {
-    //         //               if (err) {
-    //         //                   console.log("[API.Bots.post] Reply Message Error!");
-    //         //               } else {
-    //         //                   console.log("[API.Bots.post] Reply Message Sent!");
-    //         //               }
-    //         //           });
-    //         //     });
-    //         // }
-    //     }
-    // }
+            //       API.Bots.post(
+            //           ACCESS_TOKEN, // Identify the access token
+            //           bot_id, // Identify the bot that is sending the message
+            //           response.body, // Construct the message
+            //           {}, // No pictures related to this post
+            //           function(err,res) {
+            //               if (err) {
+            //                   console.log("[API.Bots.post] Reply Message Error!");
+            //               } else {
+            //                   console.log("[API.Bots.post] Reply Message Sent!");
+            //               }
+            //           });
+            //     });
+            // }
+        }
+    }
 
 });
 
