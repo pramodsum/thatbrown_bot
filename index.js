@@ -113,8 +113,7 @@ incoming.on('message', function(msg) {
               var timeinmilisec = date_to_reply.getTime() - today.getTime();
               var time = Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24))
 
-              var message = "TBS is in " + time + " days! GET PUMPED!!!!";
-              if(time == "now") message = "BURSLEY BAITS IS @ CC LITTLE RIGHT NOW! GOGOGOGOGOGOGO!";
+              var message = "TBS is in " + time + " days! GET PUMPED! YEA WOOHOO!";
               API.Bots.post(
                 ACCESS_TOKEN, // Identify the access token
                 bot_id, // Identify the bot that is sending the message
