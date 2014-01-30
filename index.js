@@ -198,7 +198,6 @@ incoming.on('message', function(msg) {
             else if(txt.search("next bus") != -1) {
               var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits";
               var looking_for = "index.php?&route=Bursley-Baits&stop=C.C.%20Little%20SE#Bursley-Baits%20C.C.%20Little%20SE";
-              var lngth = new String("index.php?&route=Bursley-Baits&stop=C.C.%20Little%20SE#Bursley-Baits%20C.C.%20Little%20SE").length();
 
               request({
                 uri: url,
@@ -209,7 +208,7 @@ incoming.on('message', function(msg) {
                   return;
                 }
 
-                var time = body.substr(line_num + lngth + 4, 3);
+                var time = body.substr(line_num + looking_for.length + 4, 3);
                 console.dir("TIME: " + time);
                 if(time.charAt(1) == 'm') time.replace(time.substr(0,1));
 
