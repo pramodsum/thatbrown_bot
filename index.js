@@ -197,14 +197,14 @@ incoming.on('message', function(msg) {
 
             else if(txt.search("next bus") != -1) {
               var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits";
-              var looking_for = "<a title=\"click to refresh stop C.C. Little SE for route Bursley-Baits\" href=\"index.php?&route=Bursley-Baits&stop=C.C.%20Little%20SE#Bursley-Baits%20C.C.%20Little%20SE\" >[";
+              var looking_for = "\<a title=\"click to refresh stop C.C. Little SE for route Bursley-Baits\" href=\"index.php?&route=Bursley-Baits&stop=C.C.%20Little%20SE#Bursley-Baits%20C.C.%20Little%20SE\" \>\[";
 
               request({
                 uri: url,
               }, function(error, response, body) {
                 console.log("BODY: \n" + body);
 
-                var line_num = body.toString().search(looking_for);
+                var line_num = body.search(looking_for);
                 if(line_num == -1) return;
 
                 var time = body.substr(line_num + 1, 2);
