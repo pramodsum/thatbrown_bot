@@ -209,9 +209,8 @@ incoming.on('message', function(msg) {
                 }
 
                 var time = body.substr(line_num + looking_for.length + 4, 3);
-                console.dir("TIME: " + time);
-                var bracket = time.indexOf(']');
-                if(bracket != -1) time.replace(time.substr(0, bracket));
+                console.dir("TIME: " + time + " " + time.charAt(2) == ']');
+                if(time.charAt(2) == ']') time.replace(time.substr(0,1) + m);
 
                 var message = "Next Bursley Baits bus @ CC Little in " + time + "\n";
                 API.Bots.post(
