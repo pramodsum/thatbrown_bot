@@ -1,6 +1,7 @@
-/**
+/************************************************************************
 
 ThatBrown Bot Triggers: 
+-----------------------
   "how many days until TBS" or "How many days until TBS": 
       Messages with number of days until TBS Show
   "tbs" or "TBS" or "Tbs" or "Tbreezy" or "tbreezy": 
@@ -12,7 +13,7 @@ ThatBrown Bot Triggers:
   "Next bus to north" or "next bus to north":
       Prints number of minutes until Bursley Baits reaches CC Little
 
-**/
+ ***********************************************************************/
 
 var express = require("express"),
   logfmt = require("logfmt"),
@@ -202,40 +203,40 @@ incoming.on('message', function(msg) {
             /************************************************************************
              * Bollywood API stuff
              ***********************************************************************/
-            // else if(txt.search("ThatBrown review") != -1) {
-            //   var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
-            //   var dev_id = '5a9b85fd';
-            //   var album_id = txt.replace("ThatBrown review ", "");
-            //   var hmac = crypto.createHmac('sha256', private_key);
-            //   var digest = hmac.digest('base64');
+            /*else if(txt.search("ThatBrown review") != -1) {
+              var private_key = 'cfd2d4b1e7bee9ff103656af5e49b03c';
+              var dev_id = '5a9b85fd';
+              var album_id = txt.replace("ThatBrown review ", "");
+              var hmac = crypto.createHmac('sha256', private_key);
+              var digest = hmac.digest('base64');
 
-            //   console.dir("hmac: " + digest);
+              console.dir("hmac: " + digest);
 
-            //   var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
-            //   console.dir("URL: " + url);
+              var url = "http://www.bollywoodapi.com/v1/search/albums/" + album_id + "?DeveloperID=" + dev_id + "&Version=1.0";
+              console.dir("URL: " + url);
 
-            //   var Request = unirest.get(url)
-            //     .headers({ 
-            //       'Accept': 'application/json',
+              var Request = unirest.get(url)
+                .headers({ 
+                  'Accept': 'application/json',
 
-            //     })
-            //     .end(function (response) {
-            //       console.dir(response.body);
+                })
+                .end(function (response) {
+                  console.dir(response.body);
 
-            //       API.Bots.post(
-            //           ACCESS_TOKEN, // Identify the access token
-            //           bot_id, // Identify the bot that is sending the message
-            //           response.body, // Construct the message
-            //           {}, // No pictures related to this post
-            //           function(err,res) {
-            //               if (err) {
-            //                   console.log("[API.Bots.post] Reply Message Error!");
-            //               } else {
-            //                   console.log("[API.Bots.post] Reply Message Sent!");
-            //               }
-            //           });
-            //     });
-            // }
+                  API.Bots.post(
+                      ACCESS_TOKEN, // Identify the access token
+                      bot_id, // Identify the bot that is sending the message
+                      response.body, // Construct the message
+                      {}, // No pictures related to this post
+                      function(err,res) {
+                          if (err) {
+                              console.log("[API.Bots.post] Reply Message Error!");
+                          } else {
+                              console.log("[API.Bots.post] Reply Message Sent!");
+                          }
+                      });
+                });
+            }*/
 
             /************************************************************************
              * Bus Queries
