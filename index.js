@@ -106,10 +106,12 @@ incoming.on('message', function(msg) {
              * Days until TBS
              ***********************************************************************/
             if(txt.search("how many days until TBS") != -1 || txt.search("How many days until TBS") != -1) {
-              require('./Date');
-              var today = Date.today();
-              var TBS_date = Date.parse("April 5th 2014");
-              var time = TBS_date.getDate() - today.getDate();
+              // var today = Date.now
+              // var TBS_date = Date.parse("April 5, 2014");
+              var today = new Date();
+              var date_to_reply = new Date("April 5, 2014");
+              var timeinmilisec = date_to_reply.getTime() - today.getTime();
+              var time = Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24))
 
               var message = "TBS is in " + time + " days! GET PUMPED!!!!";
               if(time == "now") message = "BURSLEY BAITS IS @ CC LITTLE RIGHT NOW! GOGOGOGOGOGOGO!";
