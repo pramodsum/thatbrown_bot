@@ -210,9 +210,8 @@ incoming.on('message', function(msg) {
 
                 var time = body.substr(line_num + looking_for.length + 4, 3);
                 console.dir("TIME: " + time);
-                if(time.charAt(1) == 'm') time.replace(time.substr(0,1));
 
-                var message = "Next Bursley Baits bus @ CC Little in: " + time + " minutes\n";
+                var message = "Next Bursley Baits bus @ CC Little in: " + time + "\n";
                 API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
