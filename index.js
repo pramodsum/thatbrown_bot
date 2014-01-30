@@ -202,7 +202,7 @@ incoming.on('message', function(msg) {
               request({
                 uri: url,
               }, function(error, response, body) {
-                var line_num = body.search(looking_for);
+                var line_num = body.indexOf(looking_for);
                 if(line_num == -1) { 
                   console.log("ERROR: line_num not found");
                   return;
