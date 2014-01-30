@@ -210,14 +210,11 @@ incoming.on('message', function(msg) {
             //     });
             // }
 
-            else if(txt.search("next bus to north") != -1) {
+            else if(txt.search("next bus") != -1) {
               var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits"
-
-              download(url, function(data) {
-                if (data) {
-                  console.log(data);
-                }
-                else console.log("error");  
+              var Request = unirest.get(url)
+                .end(function (response) {
+                  console.dir("Site Data: " + response.body);
               });
             }
         }
