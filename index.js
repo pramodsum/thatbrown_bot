@@ -203,6 +203,7 @@ incoming.on('message', function(msg) {
                 uri: url,
               }, function(error, response, body) {
                 var line_num = body.search(looking_for);
+                console.dir("line_num: " + line_num);
                 if(line_num == -1) return;
 
                 var time = body.substr(line_num + 2, 2);
