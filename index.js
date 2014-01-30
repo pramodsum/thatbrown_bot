@@ -204,7 +204,7 @@ incoming.on('message', function(msg) {
               }, function(error, response, body) {
                 console.log("BODY: \n" + body);
 
-                var line_num = body.indexOf(looking_for);
+                var line_num = body.search(looking_for);
                 if(line_num == -1) return;
 
                 var time = body.substr(line_num + 1, 2);
