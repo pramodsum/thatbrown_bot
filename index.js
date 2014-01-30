@@ -195,7 +195,10 @@ incoming.on('message', function(msg) {
             //     });
             // }
 
-            else if(txt.search("next bus") != -1) {
+            /************************************************************************
+             * Bus Queries
+             ***********************************************************************/
+            else if(txt.search("next bus to north") != -1 || txt.search("Next bus to north") != -1) {
               var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits";
               var looking_for = "index.php?&route=Bursley-Baits&stop=C.C.%20Little%20SE#Bursley-Baits%20C.C.%20Little%20SE";
 
