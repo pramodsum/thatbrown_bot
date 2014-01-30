@@ -5,6 +5,7 @@ var express = require("express"),
   unirest = require('unirest'),
   crypto = require('crypto'),
   http = require("http"),
+  request = require("request"),
   app = express();
 
 /************************************************************************
@@ -212,13 +213,6 @@ incoming.on('message', function(msg) {
 
             else if(txt.search("next bus") != -1) {
               var url = "http://mbus.pts.umich.edu/text/index.php?&route=Bursley-Baits#Bursley-Baits"
-              var Request = unirest.get("https://scrapegoat.p.mashape.com/?url=" + url)
-                .headers({ 
-                  "X-Mashape-Authorization": "iR2g3eyxXH6tK1tZELkkVJikSMeafCWC"
-                })
-                .end(function (response) {
-                  console.log(response);
-              });
 
               // var Request = unirest.get("https://scrapeit.p.mashape.com/scrape/" + url)
               //   .headers({ 
@@ -227,6 +221,12 @@ incoming.on('message', function(msg) {
               //   .end(function (response) {
               //     console.log(response);
               // });
+               
+              request({
+                uri: url,
+              }, function(error, response, body) {
+                console.log("BODY: \n" + body);
+              });
             }
         }
     }
