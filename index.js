@@ -122,7 +122,7 @@ incoming.on('message', function(msg) {
             /************************************************************************
              * Days until TBS
              ***********************************************************************/
-            if(txt.search("how many days until TBS") != -1 || txt.search("How many days until TBS") != -1) {
+            if(txt.search("how many days until TBS") != -1 || txt.search("How many days until TBS") != -1 || txt.search("How many days until tbs") != -1 || txt.search("how many days until tbs") != -1) {
               // var today = Date.now
               // var TBS_date = Date.parse("April 5, 2014");
               var today = new Date();
