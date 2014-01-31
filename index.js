@@ -166,7 +166,7 @@ incoming.on('message', function(msg) {
             /************************************************************************
              * Late response
              ***********************************************************************/
-            else if(txt.search("late") != -1 || txt.search("Almost there") != -1 || txt.search("almost there") != -1) {
+            else if(txt.search("late") != -1 || txt.search("Late") != -1 || txt.search("Almost there") != -1 || txt.search("almost there") != -1) {
               API.Bots.post(
                   ACCESS_TOKEN, // Identify the access token
                   bot_id, // Identify the bot that is sending the message
